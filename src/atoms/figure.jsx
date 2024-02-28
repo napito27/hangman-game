@@ -33,6 +33,13 @@ function Figure({wrongLetters}) {
         {/* right leg */}
         {error > 7 && <line x1='140' y1='150' x2='164' y2='185' />}
         {error > 7 && <circle cx='167' cy='189' r='3' />}
+        {error > 7 && <line x1='128' y1='66' x2='133' y2='71'/>}
+        {error > 7 && <line x1='148' y1='66' x2='153' y2='71'/>}
+
+        {error > 7 && <line x1='133' y1='66' x2='128' y2='71'/>}
+        {error > 7 && <line x1='153' y1='66' x2='148' y2='71'/>}
+
+        {error > 7 && <line x1='133' y1='80' x2='147' y2='80'/>}
       </svg>
     </>
   );

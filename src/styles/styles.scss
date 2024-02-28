@@ -1,8 +1,11 @@
+$color-white: #fff;
+$color-light-blue: #34495e;
+
 body {
   align-items: center;
   background-color: #34495e8f;
   box-sizing: border-box;
-  color: #fff;
+  color: $color-white;
   display: flex;
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
@@ -18,32 +21,60 @@ body {
   padding: 0;
 }
 
+/* global style*/
+button {
+  background-color: #34495e49;
+  border-color: #297fb99a;
+  border-radius: 100vmax;
+  color: $color-white;
+  cursor: pointer;
+  letter-spacing: 1px;
+  margin-top: 20px;
+  padding: .5rem 1rem;
+  transition: transform 0.3s ease;
+}
+
+
 .header {
   margin: 2rem auto;
+  position: relative;
   text-align: center;
 
   & h1 {
     margin-bottom: .5rem;
   }
+
+}
+
+.display-letter {
+  border: 2px solid $color-light-blue;
+  border-radius: .5rem;
+  bottom: -5px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);
+  font-size: 1.5rem;
+  height: 36px;
+  position: absolute;
+  right: 80px;
+  width: 40px;
 }
 
 .game-container {
   background-color: transparent;
-  border: 2px solid #34495e;
+  border: 2px solid $color-light-blue;
   border-radius: .5rem;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.4);
+  height: 450px;
+  margin: auto;
   padding: 20px 30px;
   position: relative;
-  margin: auto;
-  height: 450px;
   width: 550px;
-  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.4);
 }
 
 .figure-container {
   fill: transparent;
-  stroke: #fff;
-  stroke-width: 4px;
+  stroke: $color-white;
   stroke-linecap: round;
+  stroke-width: 4px;
 }
 
 .figure-part {
@@ -51,12 +82,12 @@ body {
 }
 
 .wrong-letters-container {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
   flex-direction: column;
+  display: flex;
+  position: absolute;
+  right: 20px;
   text-align: right;
+  top: 20px;
 }
 
 .wrong-letters-container p {
@@ -68,84 +99,124 @@ body {
 }
 
 .word {
-  display: flex;
-  position: absolute;
   bottom: 10px;
+  display: flex;
   left: 50%;
+  position: absolute;
   transform: translateX(-50%);
 }
 
 .letter {
+  align-items: center;
   border-bottom: 3px solid #2980b9;
   display: inline-flex;
   font-size: 30px;
-  align-items: center;
+  height: 50px;
   justify-content: center;
   margin: 0 3px;
-  height: 50px;
   width: 20px;
 }
 
 .popup-container {
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.3);
+  bottom: 0;
+  display: none;
+  left: 0;
+  justify-content: center;
   position: fixed;
   top: 0;
-  bottom: 0;
-  left: 0;
   right: 0;
-  /* display: flex; */
-  display: none;
-  align-items: center;
-  justify-content: center;
 }
 
 .popup {
   background: #297fb98c;
-  // background: transparent;
-  border: 2px solid  #34495e;
+  border: 2px solid  $color-light-blue;
   border-radius: .5rem;
   box-shadow: 0 15px 10px 3px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
 }
 
-.popup button {
-  cursor: pointer;
-  background-color: #fff;
-  color: #2980b9;
+.btn {
+  background-color: $color-white;
   border: 0;
   border-radius: 100vmax;
+  color: #2980b9;
+  cursor: pointer;
+  font-size: 16px;
   margin-top: 20px;
   padding: 12px 20px;
-  font-size: 16px;
-}
 
-.popup button:active {
-  transform: scale(0.98);
-}
-
-.popup button:focus {
-  outline: 0;
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
 .notification-container {
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 10px 10px 0 0;
+  bottom: -50px;
+  margin-left: 150px;
   padding: 15px 20px;
   position: absolute;
-  bottom: -50px;
   text-align: center;
   transition: transform 0.3s ease-in-out;
-  margin-left: 150px;
 }
 
 .notification-container.show {
   transform: translateY(-50px);
 }
 
-.copyright {
-  text-align: right;
+.animation {
+  font-size: 20rem;
+  opacity: .1;
   position: absolute;
+  right: 3%;
+  top: 18%;
+}
+
+.counter {
+  color: $color-light-blue;
+  text-align: center;
+  padding: 1.5rem 0;
+
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  :first-child {
+    font-size: 1.7rem;
+    font-weight: 600;
+  }
+
+  & :not(:first-child) {
+    color: $color-white;
+    display: inline;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 0 1rem ;
+  }
+
+  .reset {
+    display: block;
+    margin: 1rem auto;
+
+    &:hover {
+      box-shadow: 0 6px 3px 1px rgba(0, 0, 0, .4);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      box-shadow: none;
+      transform: translateY(2px);
+    }
+  }
+}
+
+.copyright {
   bottom: 5px;
+  position: absolute;
   right: 5px;
+  text-align: right;
 }
